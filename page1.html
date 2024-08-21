@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>CGPA Calculator - Velammal Engineering College</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+    .header {
+        background-color: #004080;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header p {
+        margin: 5px 0;
+    }
+    .content {
+        margin: 50px auto;
+        width: 80%;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .content h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #004080;
+    }
+    .content p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    .content p.para-title {
+        font-weight: bold;
+        font-size: 18px;
+        color: #004080;
+        margin-top: 20px;
+    }
+    .formula {
+        margin: 50px auto;
+        width: 80%;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .navigation {
+        text-align: center;
+        margin: 40px 0;
+    }
+    .navigation button {
+        background-color: #00796b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+    .navigation button:hover {
+        background-color: #004d40;
+    }
+    .marquee-container {
+        background-color: #004080;
+        color: white;
+        padding: 10px;
+        margin-top: 30px;
+        border-radius: 5px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    marquee {
+        font-weight: bold;
+        font-size: 16px;
+    }
+</style>
+<script>
+    function goToPreviousPage(){
+        window.location.href="C:/pappu/cgpa/page1.html";
+    }
+    function goToNextPage(){
+        window.location.href="C:/pappu/cgpa/page2.html";
+    }
+</script>
+</head>
+<body>
+
+<div class="header">
+    <p>Velammal Engineering College</p>
+    <p>Department Of Information Technology</p>
+    <p>CGPA Calculator (R-2023, CBCS: UG Curriculum)</p>
+</div>
+
+<div class="content">
+    <h2>Understanding GPA/CGPA</h2>
+    <p class="para-title">What is GPA/CGPA?</p>
+    <p>GPA (Grade Point Average) is the average of grades earned in courses over a term. CGPA (Cumulative Grade Point Average) is the overall average of GPA over multiple terms or an academic program.</p>
+
+    <p class="para-title">Grade Sheets Information:</p>
+    <p>After results are declared, Grade Sheets will be issued to each student which will contain the following details:</p>
+    <ul>
+        <li>The college in which the candidate has studied</li>
+        <li>The list of courses enrolled during the semester and the grade scored</li>
+        <li>The Grade Point Average (GPA) for the semester</li>
+        <li>The Cumulative Grade Point Average (CGPA) of all courses enrolled from the first semester onwards</li>
+    </ul>
+
+    <p class="para-title">How to Calculate GPA/CGPA?</p>
+    <p>GPA for a semester is the ratio of the sum of the products of the number of credits for courses acquired and the corresponding points to the sum of the number of credits for the courses acquired in the semester. CGPA will be calculated similarly, considering all the courses registered from the first semester. U grades will be excluded for calculating GPA and CGPA.</p>
+
+    <div class="formula">
+        <p><strong>GPA Formula:</strong><br>
+        GPA = &#8721; (Grade Points &times; Course Credits) / &#8721;Course Credits</p>
+    </div>
+
+    <div class="formula">
+        <p><strong>CGPA Formula:</strong><br>
+        CGPA = &#8721; (GPA for each term &times; Credits for that term) / &#8721; Total Credits for all terms</p>
+    </div>
+</div>
+
+<div class="marquee-container">
+    <marquee> Click on the Next Button to calculate your CGPA! </marquee>
+</div>
+
+<div class="navigation">
+    <button onclick="goToPreviousPage()">Previous</button>
+    <button onclick="goToNextPage()">Next</button>
+</div>
+
+</body>
+</html>

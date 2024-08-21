@@ -1,0 +1,1245 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.ani{
+background-color:#B3CDE0; 
+padding: 10px; 
+border-radius: 5px; 
+font-weight:bold; 
+color:rgba(51, 102, 153); 
+font-size:25px;
+animation: fadeInUp 2s ease-in-out;
+}
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.navigation {
+        text-align: center;
+        margin: 40px 0;
+		margin-top:50px;
+    }
+    .navigation button {
+        background-color: #00796b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+    .navigation button:hover {
+        background-color: #004d40;
+		}
+table, th, td {
+  border:1px solid black;
+    border-collapse: collapse;
+	font-weight:bold;
+}
+tr:nth-child(even) {
+  background-color: rgba(51, 102, 153);
+}
+
+th:nth-child(even),td:nth-child(even) {
+  background-color: rgbargba(51, 102, 153, 1);
+}
+
+.cgpa-box{
+margin-top:50px;
+}
+
+</style>
+<script>
+var GPAArr=[];
+function goToPreviousPage(){
+    window.location.href="C:/pappu/cgpa/page1.html"; // Corrected file path
+}
+function goToNextPage(){
+    window.location.href="C:/pappu/cgpa/page2.html"; // Corrected file path
+}
+function calculateGPA(semesterId,numCourse){
+//alert("called");
+var gpa=0;
+var credValue;
+var gradValue;
+var courseValue;
+var credits=0;
+for(var i=1;i<=Number(numCourse);i++){
+//ex: s1_cr1
+credValue=Number(document.getElementById("s"+semesterId+"_cr"+i).innerHTML);
+gradValue=Number(document.getElementById("s"+semesterId+"_gr"+i).value);
+credits=credits+credValue;
+courseValue=credValue*gradValue;
+gpa=gpa+courseValue;
+
+//alert("gpa: "+gpa);
+}
+//finalGpa=Math.round(gpa/credits);number.toFixed(2)
+finalGpa=(gpa/credits).toFixed(2)
+//alert(document.getElementById("result_"+semesterId
+GPAArr[semesterId]=finalGpa;
+document.getElementById("result_"+semesterId).innerHTML="GPA= "+finalGpa;
+console.log(GPAArr);
+}
+//
+function calculateCGPA(totalSem){
+var gpaTotal=0;
+var thisGpa;
+var sumittedSemCount=0;
+	for(var i=1;i<=totalSem;i++){
+		thisGpa=Number(document.getElementById("result_"+i).innerHTML);
+		//if(thisGpa != 0 && thisGpa != "" && thisGpa != null){
+		if(Number(GPAArr[i])>0){
+		sumittedSemCount++;
+		gpaTotal=gpaTotal+Number(GPAArr[i]);
+		}
+		//}else{
+		//alert("You need to submit GPAs for each semester before calculating CGPA");
+		//return;
+		//}
+	}
+	cgpa=(gpaTotal/sumittedSemCount).toFixed(2);
+	document.getElementById("cgpa-box").innerHTML="CGPA= "+cgpa;
+	
+}
+alert("Click OK to Calculate CGPA");
+</script>
+</head>
+<body>
+<center>
+<div class="ani" >
+<p >CGPA Calculator</p>
+</center>
+</div>
+</br>
+<!-- -->
+<!-- Semester 1 START-->
+<div>
+<table style="width:100%">
+<tr>
+<td style="width:60%">
+<table style="width:100%">
+<tr>
+<th>Semester 1</th>
+</tr>
+<tr>
+<th>Course</th>
+<th>Credits</th>
+<th>Choose Grade</th>
+</tr>
+  <tr>
+<td>Communication English(23EN101T)</td>
+<td id="s1_cr1">3</td>
+<td>
+<select id="s1_gr1">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Matrices and calculus(23MA101T)</td>
+<td id="s1_cr2">4</td>
+<td>
+<select id="s1_gr2">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Engineering Physics(23PH101T)</td>
+<td id="s1_cr3">3</td>
+<td>
+<select id="s1_gr3">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+<tr/>
+<tr>
+<td>Engineering chemistry(23CH101T)</td>
+<td id="s1_cr4">3</td>
+<td>
+<select id="s1_gr4">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>PSPP(23CS101T)</td>
+<td id="s1_cr5">3</td>
+<td>
+<select id="s1_gr5">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Heritage of tamil(23GE101T)</td>
+<td id="s1_cr6">1</td>
+<td>
+<select id="s1_gr6">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>PSPP Laboratory(23CS102L)</td>
+<td id="s1_cr7">2</td>
+<td>
+<select id="s1_gr7">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>PC Laboratory(23BS102L)</td>
+<td id="s1_cr8">2</td>
+<td>
+<select id="s1_gr8">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Comunication English Lab(23EN102L)</td>
+<td id="s1_cr9">1</td>
+<td>
+<select id="s1_gr9">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+</table>
+</td>
+<td id="result_1" style="width:40%;padding-left:20px"></td>
+</tr>
+<tr >
+<td colspan="2" style="text-align:center">
+<button onclick="calculateGPA(1,9)" style="background-color: #00796b;
+        color: white;">Submit</button>
+</td>
+</tr>
+</table>
+</div>
+</br>
+<!-- Semester 1 END-->
+<!-- -->
+<!-- -->
+<!-- Semester 2 START-->
+<div>
+<table style="width:100%">
+<tr>
+<td style="width:60%">
+<table style="width:100%">
+<tr>
+<th>Semester 2</th>
+</tr>
+<tr>
+<th>Course</th>
+<th>Credits</th>
+<th>Choose Grade</th>
+</tr>
+  <tr>
+<td>Technical English (23EN103T)</td>
+<td id="s2_cr1">3</td>
+<td>
+<select id="s2_gr1">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Statistics and Numerical methods (23MA102T)</td>
+<td id="s2_cr2">4</td>
+<td>
+<select id="s2_gr2">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Physics for cs engineers (23PH105T)</td>
+<td id="s2_cr3">3</td>
+<td>
+<select id="s2_gr3">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Engineering graphics (23ME101T)</td>
+<td id="s2_cr4">4</td>
+<td>
+<select id="s2_gr4">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Programming in C(23CS103T)</td>
+<td id="s2_cr5">3</td>
+<td>
+<select id="s2_gr5">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Tamils and technology(23GE102T)</td>
+<td id="s2_cr6">1</td>
+<td>
+<select id="s2_gr6">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Environmental science and sustainability (23CH102T)</td>
+<td id="s2_cr7">2</td>
+<td>
+<select id="s2_gr7">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Engineering practices(23ME102T)</td>
+<td id="s2_cr8">2</td>
+<td>
+<select id="s2_gr8">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Programming in C(23CS104L)</td>
+<td id="s2_cr9">2</td>
+<td>
+<select id="s2_gr9">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Technical English (23EN104L)</td>
+<td id="s2_cr10">1</td>
+<td>
+<select id="s2_gr10">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+</table>
+</td>
+<td id="result_2" style="width:40%;padding-left:20px"></td>
+</tr>
+<tr >
+<td colspan="2" style="text-align:center">
+<button onclick="calculateGPA(2,10)" style="background-color: #00796b; color:white">Submit</button>
+</td>
+</tr>
+</table>
+</div>
+</br>
+<!-- Semester 2 END-->
+<!-- -->
+<!-- -->
+<!-- Semester 3 START-->
+<div>
+<table style="width:100%">
+<tr>
+<td style="width:60%">
+<table style="width:100%">
+<tr>
+<th>Semester 3</th>
+</tr>
+<tr>
+<th>Course</th>
+<th>Credits</th>
+<th>Choose Grade</th>
+</tr>
+ <tr>
+<td>DPCO(23CS201T)</td>
+<td id="s3_cr1">4</td>
+<td>
+<select id="s3_gr1">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Data science(23AD208T)</td>
+<td id="s3_cr2">3</td>
+<td>
+<select id="s3_gr2">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Data Structures(23CS202T)</td>
+<td id="s3_cr3">3</td>
+<td>
+<select id="s3_gr3">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>OOPs(23IT201T)</td>
+<td id="s3_cr4">3</td>
+<td>
+<select id="s3_gr4">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Operating System(23CS203I)</td>
+<td id="s3_cr5">4</td>
+<td>
+<select id="s3_gr5">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>DSS Laboratory(23CS204L)</td>
+<td id="s3_cr6">2</td>
+<td>
+<select id="s3_gr6">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>OOPs Laboratory(23IT202L)</td>
+<td id="s3_cr7">2</td>
+<td>
+<select id="s3_gr7">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>DS Laboratory(23AD209L)</td>
+<td id="s3_cr8">2</td>
+<td>
+<select id="s3_gr8">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>QA-VR(23TP201L)</td>
+<td id="s3_cr9">1</td>
+<td>
+<select id="s3_gr9">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+</table>
+</td>
+<td id="result_3" style="width:40%;padding-left:20px"></td>
+</tr>
+<tr >
+<td colspan="2" style="text-align:center">
+<button onclick="calculateGPA(3,9)" style="background-color: #00796b; color:white;">Submit</button>
+</td>
+</tr>
+</table>
+</div>
+</br>
+<!-- Semester 3 END-->
+<!-- -->
+<!-- -->
+<!-- Semester 4 START-->
+<div>
+<table style="width:100%">
+<tr>
+<td style="width:60%">
+<table style="width:100%">
+<tr>
+<th>Semester 4</th>
+</tr>
+<tr>
+<th>Course</th>
+<th>Credits</th>
+<th>Choose Grade</th>
+</tr>
+ <tr>
+<td>Discrete Mathematics(23MA201T)</td>
+<td id="s4_cr1">4</td>
+<td>
+<select id="s4_gr1">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Design and Analysis of Algorithms(23CS205T)</td>
+<td id="s4_cr2">4</td>
+<td>
+<select id="s4_gr2">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Software Engineering(23IT203T)</td>
+<td id="s4_cr3">3</td>
+<td>
+<select id="s4_gr3">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>DBMS(23IT204T)</td>
+<td id="s4_cr4">3</td>
+<td>
+<select id="s4_gr4">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Java Programming(23CS205IT)</td>
+<td id="s4_cr5">3</td>
+<td>
+<select id="s4_gr5">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>DBMS Laboratory(23IT206L)</td>
+<td id="s4_cr6">2</td>
+<td>
+<select id="s4_gr6">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Java Programming Laboratory(23IT202L)</td>
+<td id="s4_cr7">2</td>
+<td>
+<select id="s4_gr7">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>QA-BS(23TP202L)</td>
+<td id="s4_cr8">1</td>
+<td>
+<select id="s4_gr8">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+</table>
+</td>
+<td id="result_4" style="width:40%;padding-left:20px"></td>
+</tr>
+<tr >
+<td colspan="2" style="text-align:center">
+<button onclick="calculateGPA(4,8)" style="background-color: #00796b; color:white;">Submit</button>
+</td>
+</tr>
+</table>
+</div>
+</br>
+<!-- Semester 4 END-->
+<!-- -->
+<!-- -->
+<!-- Semester 5 START-->
+<div>
+<table style="width:100%">
+<tr>
+<td style="width:60%">
+<table style="width:100%">
+<tr>
+<th>Semester 5</th>
+</tr>
+<tr>
+<th>Course</th>
+<th>Credits</th>
+<th>Choose Grade</th>
+</tr>
+ <tr>
+<td>Full Stack Web Development (23IT301T)</td>
+<td id="s5_cr1">3</td>
+<td>
+<select id="s5_gr1">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Compiler Design(23CS301T)</td>
+<td id="s5_cr2">4</td>
+<td>
+<select id="s5_gr2">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+ <tr>
+<td>Open Elective I</td>
+<td id="s5_cr3">3</td>
+<td>
+<select id="s5_gr3">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Mandatory Course-I</td>
+<td id="s5_cr4">0</td>
+<td>
+<select id="s5_gr4">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+ 
+<tr>
+<td>Data Communication and Networking (23IT302I)</td>
+<td id="s5_cr5">4</td>
+<td>
+<select id="s5_gr5">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Web Essentials (23IT303I)</td>
+    <td id="s5_cr6">4</td>
+ <td>
+<select id="s5_gr6">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+  </tr>
+  <tr>
+    <td>Professional Elective I</td>
+    <td id="s5_cr7">3</td>
+   <td>
+<select id="s5_gr7">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+  </tr>
+  
+  <tr>
+    <td>Full Stack Web Development Laboratory (23IT304L)</td>
+    <td id="s5_cr8">2</td>
+    <td>
+<select id="s5_gr8">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+<tr>
+  <td>Quantitative Aptitude & Communication Skills (23TP301L)</td>
+  <td id="s5_cr9">1</td>
+  <td>
+<select id="s5_gr9">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+</tr>
+</table>
+</td>
+<td id="result_5" style="width:40%;padding-left:20px"></td>
+</tr>
+<tr >
+<td colspan="2" style="text-align:center">
+<button onclick="calculateGPA(5,9)" style="background-color: #00796b; color:white;">Submit</button>
+</td>
+</tr>
+</table>
+</div>
+</br>
+<!-- Semester 5 END-->
+<!-- -->
+<!-- -->
+<!-- Semester 6 START-->
+<div>
+<table style="width:100%">
+<tr>
+<td style="width:60%">
+<table style="width:100%">
+<tr>
+<th>Semester 6</th>
+</tr>
+<tr>
+<th>Course</th>
+<th>Credits</th>
+<th>Choose Grade</th>
+</tr>
+ <tr>
+      <td>Mobile Computing (23IT305T)</td>
+      <td id="s6_cr1">3</td>
+     <td>
+<select id="s6_gr1">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+    <tr>
+      <td>Open Elective–II</td>
+      <td id="s6_cr2">3</td>
+     <td>
+<select id="s6_gr2">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+    <tr>
+      <td>Mandatory Course-II&</td>
+      <td id="s6_cr3">0</td>
+     <td>
+<select id="s6_gr3">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+  </tr>
+    
+  <tr>
+      <td>Artificial Intelligence and Machine Learning (23AD307I)</td>
+      <td id="s6_cr4">4</td>
+      <td>
+<select id="s6_gr4">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+    <tr>
+      <td>Professional Elective II</td>
+      <td id="s6_cr5">3</td>
+      <td>
+<select id="s6_gr5">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+    <tr>
+      <td>Professional Elective III</td>
+      <td id="s6_cr6">3</td>
+      <td>
+<select id="s6_gr6">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+    <tr>
+      <td>Professional Elective IV</td>
+      <td id="s6_cr7">3</td>
+      <td>
+<select id="s6_gr7">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+     
+    <tr>
+      <td>Mobile Application
+        Development Laboratory (23IT306L)</td>
+      <td id="s6_cr8">2</td>
+      <td>
+<select id="s6_gr8">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+  </tr>
+  <tr>
+    <td>Mini Project (23IT307L)</td>
+    <td id="s6_cr9">2</td>
+    <td>
+<select id="s6_gr9">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+  </tr>
+  <tr>
+    <td>Quantitative Aptitude and Soft
+        Skills (23TP302L)</td>
+    <td id="s6_cr10">1</td>
+<td>
+<select id="s6_gr10">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+  </tr>
+</table>
+</td>
+<td id="result_6" style="width:40%;padding-left:20px"></td>
+</tr>
+<tr >
+<td colspan="2" style="text-align:center">
+<button onclick="calculateGPA(6,10)" style="background-color: #00796b; color:white;">Submit</button>
+</td>
+</tr>
+</table>
+</div>
+</br>
+<!-- Semester 6 END-->
+<!-- -->
+<!-- -->
+<!-- Semester 7 START-->
+<div>
+<table style="width:100%">
+<tr>
+<td style="width:60%">
+<table style="width:100%">
+<tr>
+<th>Semester 7</th>
+</tr>
+<tr>
+<th>Course</th>
+<th>Credits</th>
+<th>Choose Grade</th>
+</tr>
+<tr>
+      <td>Human Values and Ethics (23MS401T)</td>
+      <td id="s7_cr1">2</td>
+      <td>
+<select id="s7_gr1">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+    <tr>
+      <td>Elective-Management</td>
+      <td id="s7_cr2">3</td>
+      <td>
+<select id="s7_gr2">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+    <tr>
+      <td>Open Elective–III</td>
+      <td id="s7_cr3">3</td>
+<td>
+<select id="s7_gr3">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+     
+    <tr>
+      <td>Professional Elective – V</td>
+      <td id="s7_cr4">3</td>
+ <td>
+<select id="s7_gr4">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+    <tr>
+      <td>Professional Elective – VI</td>
+      <td id="s7_cr5">3</td>
+      <td>
+<select id="s7_gr5">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+     
+    <tr>
+      <td>Internship</td>
+      <td id="s7_cr6">1</td>
+     <td>
+<select id="s7_gr6">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+</table>
+</td>
+<td id="result_7" style="width:40%;padding-left:20px"></td>
+</tr>
+<tr >
+<td colspan="2" style="text-align:center">
+<button onclick="calculateGPA(7,6)" style="background-color: #00796b; color:white;">Submit</button>
+</td>
+</tr>
+</table>
+</div>
+</br>
+<!-- Semester 7 END-->
+<!-- -->
+<!-- -->
+<!-- Semester 8 START-->
+<div>
+<table style="width:100%">
+<tr>
+<td style="width:60%">
+<table style="width:100%">
+<tr>
+<th>Semester 8</th>
+</tr>
+<tr>
+<th>Course</th>
+<th>Credits</th>
+<th>Choose Grade</th>
+</tr>
+    <tr>
+      <td>Project Work (23IT402L)</td>
+      <td id="s8_cr1">10</td>
+      <td>
+<select id="s8_gr1">
+<option value="10">O</option>
+<option value="9">A+</option>
+<option value="8">A</option>
+<option value="7">B+</option>
+<option value="6">B</option>
+<option value="5">C</option>
+</select>
+</td>
+    </tr>
+</table>
+</td>
+<td id="result_8" style="width:40%;padding-left:20px"></td>
+</tr>
+<tr >
+<td colspan="2" style="text-align:center">
+<button onclick="calculateGPA(8,1)" style="background-color: #00796b; color:white;">Submit</button>
+</td>
+</tr>
+</table>
+</div>
+</br>
+<!-- Semester 8 END-->
+<!-- -->
+<center>
+<div id="cgpa-box"></div></br>
+<div><button onclick="calculateCGPA(8)" style="background-color: #00796b; color:white;">Calculate CGPA</button></div>
+
+<div class="navigation">
+<button onclick="goToPreviousPage()">Previous</button> <!-- Corrected function name -->
+<button onclick="goToNextPage()">Next</button>
+</div>
+</center>
+</body>
+</html>
